@@ -1,76 +1,248 @@
-  <!DOCTYPE html>
-  <html lang="ja">
-    <head>
-      <meta charset="UTF-8">
-      <title>Eino</title>
+<!DOCTYPE html>
+<!-- saved from url=(0208)file:///C:/Users/EIno/Desktop/%E7%AA%81%E7%84%B6%E3%81%AE%E6%AD%BB%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC(%E5%90%B9%E3%81%8D%E5%87%BA%E3%81%97%E6%96%87%E5%AD%97%E4%BD%9C%E6%88%90).html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-      <link rel="icon" sizes="192x192" href="https://php-ein0.c9users.io/html/mdl/images/android-desktop.png">
-      <link rel="apple-touch-icon-precomposed" href="https://php-ein0.c9users.io/html/mdl/images/ios-desktop.png">
-      <link rel="shortcut icon" href="https://php-ein0.c9users.io/html/mdl/images/favicon.png">
+<title>突然の死ジェネレーター(吹き出し文字作成)</title>
+<!-- Bootstrap -->
+<link href="./突然の死ジェネレーター(吹き出し文字作成)_files/bootstrap.min.css" rel="stylesheet" media="screen">
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+    <script src="../../assets/js/html5shiv.js"></script>
+    <script src="../../assets/js/respond.min.js"></script>
+<![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="format-detection" content="telephone=no">
+<meta property="og:title" content="突然の死ジェネレーター(吹き出し文字作成)">
+<meta property="og:type" content="website">
+<meta property="og:image" content="http://totuzennosi.sacnoha.com/images/thumb.png">
+<meta property="og:url" content="http://totuzennosi.sacnoha.com/">
+<meta property="og:site_name" content="突然の死ジェネレーター(吹き出し文字作成)">
+<meta property="fb:admins" content="100001703599668">
+<meta property="og:description" content="突然の死(吹き出し文字)を簡単に作れます。">
+<script type="text/javascript" async="" src="./突然の死ジェネレーター(吹き出し文字作成)_files/platform.js.ダウンロード" gapi_processed="true"></script><script src="./突然の死ジェネレーター(吹き出し文字作成)_files/ca-pub-0711854703335553.js.ダウンロード"></script><script async="" src="file://www.google-analytics.com/analytics.js"></script><script src="./突然の死ジェネレーター(吹き出し文字作成)_files/cb=gapi.loaded_1" async=""></script><script src="./突然の死ジェネレーター(吹き出し文字作成)_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./突然の死ジェネレーター(吹き出し文字作成)_files/platform.js(1).ダウンロード" gapi_processed="true"></script><script src="./突然の死ジェネレーター(吹き出し文字作成)_files/ca-pub-0711854703335553.js(1).ダウンロード"></script><script id="twitter-wjs" src="./突然の死ジェネレーター(吹き出し文字作成)_files/widgets.js.ダウンロード"></script><script id="facebook-jssdk" src="./突然の死ジェネレーター(吹き出し文字作成)_files/sdk.js.ダウンロード" gapi_processed="true"></script><script async="" src="./突然の死ジェネレーター(吹き出し文字作成)_files/analytics.js.ダウンロード"></script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-699614-13', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script type="text/javascript" src="./突然の死ジェネレーター(吹き出し文字作成)_files/jquery.js.ダウンロード"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script type="text/javascript" src="./突然の死ジェネレーター(吹き出し文字作成)_files/bootstrap.min.js.ダウンロード"></script>
+<script type="text/javascript" src="./突然の死ジェネレーター(吹き出し文字作成)_files/jquery.autosize.min.js.ダウンロード"></script>
+<script type="text/javascript" src="./突然の死ジェネレーター(吹き出し文字作成)_files/jquery.zclip.min.js.ダウンロード"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//テキストエリアのやつ
+	$("textarea").autosize();
+
+	//吹き出す
+	var sep_top = "人";
+	var sep_left = "＞　";
+	var sep_right = "　＜";
+	var sep_bottom = "^Y";
+
+	$("#input").keyup(function(){
+		var str = $(this).val();
+		if(str) {
+			var top = "＿人人人";
+			var bottom = "\r\n￣Y^Y^Y"
+			var cnt = 0;
+			var line = str.match(/\r\n|\n/g);
+			if(!line) var line = "";
+			line = line.length + 1;
+			if(line > 1) {
+				str = str.split(/\r\n|\r|\n/);
+				for(i=0;i<line;i++) {
+					if(cnt < str[i].length) cnt = str[i].length;
+					str[i] = sep_left + str[i] + sep_right;
+				}
+				str = str.join("\r\n");
+				str = str.replace(/\r\n$/, "");
+			} else {
+				cnt = str.length;
+				str = sep_left + str + sep_right;
+			}
+			//6文字以上でずれるっぽいので調整してもいいかも・全角半角でカウント方法を調整しないと調整不可
+			for(i=1;i<cnt;i++) {
+				top += sep_top;
+				bottom += sep_bottom;
+			}
+			top += "＿\r";
+			if(cnt > 1) bottom = bottom.replace(/\^Y$/m,"");
+			bottom += "￣";
+			str = top + str + bottom;
+
+			//出力テキストエリア
+			if(line > 1) $("#result").css({"height": (line + 2) * 1.6 + "em"});
+			$("#result").val(str);
+
+			//ツイートボタン用に変換
+			var btn_str = encodeURI(str) + "%0A%23" + encodeURI("突然の死");
+			$("#tweet-btn").attr("href", "https://twitter.com/intent/tweet?text=" + btn_str + "&url=http://totuzennosi.sacnoha.com");
+			console.log(btn_str);
+
+			//コピーボタン変化
+			$("#copy").removeClass("btn-info").addClass("btn-danger").text("コピーする");
+			$("#tweet-btn").addClass("btn-primary").text("↑をツイートする");
+		} else {
+			$("#result").css({"height": "inherit"}).val("＿人人人人人人人人＿\n\
+＞　文字入力して　＜\n\
+￣Y^Y^Y^Y^Y^Y^Y￣");
+			$("#copy").removeClass("btn-danger").text("・・・・・");
+			$("#tweet-btn").removeClass("btn-danger").text("・・・・・");
+		}
+	});
+	//コピーボタン
+	$(function($){
+		var btn = $("#copy");
+		if(navigator.userAgent.indexOf("iPhone") > 0 || navigator.userAgent.indexOf("iPad") > 0 || navigator.userAgent.indexOf("iPod") > 0 || navigator.userAgent.indexOf("Android") > 0) {
+			//スマホ用
+			var text = $("#result")[0];
+			btn.on("click", function(){
+				var end = text.value.length;
+				text.focus();
+				text.setSelectionRange(0,end);
+			});
+			$("body").on("copy", "#result", function() {
+				setTimeout(function() {
+					text.setSelectionRange(0,0);
+					btn.focus();
+				},500);
+			});
+			$("#result").on("change", function(){
+				$(this).val(text);
+			});
+		} else {
+			//PC用
+			$(btn).zclip({
+				path:"./js/ZeroClipboard.swf",
+				copy:function(){return $("#result").val();},
+				afterCopy:function(){
+					$(this).removeClass("btn-danger").addClass("btn-info").text("コピーしました");
+				}
+			});
+		}
+	});
+});
+</script>
+<script async="" src="./突然の死ジェネレーター(吹き出し文字作成)_files/adsbygoogle.js.ダウンロード"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-0711854703335553",
+    enable_page_level_ads: true
+  });
+</script>
+<style type="text/css">
+*{
+	font-family: Osaka-mono, "Osaka-等幅", "ＭＳ ゴシック", monospace;
+	font-size : 16px;
+	line-height: 18px;
+}
+#allwrap{
+	max-width: 900px;
+	min-width: 730px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.page-header{
+	margin-top: 5px;
+}
+.social{
+	margin: 0 0 20px 0;
+}
+.social img{
+	vertical-align: top;
+}
+.social .fb-like,
+.social .g-plusone,
+.social .twitter-share-button,
+.social .hatena-bookmark-button,
+.social .pocket-btn{
+	display: inline-block;
+	vertical-align: top;
+}
+.ad{
+	text-align: center;
+}
+.copy{
+	font-size: 10px;
+	text-align: center;
+}
+.copy a{
+	font-size: 10px;
+}
+@media screen and (max-width: 760px) {
+	#allwrap{
+		width: 100%;
+		margin: 0;
+		min-width: intrinsic;
+	}
+	.social .pocket-btn{
+		display: none;
+	}
+	h1{
+		font-size: 2rem;
+	}
+	.page-header small{
+		font-size: 1.5rem;
+	}
+}
+.fb_iframe_widget {/* fbいいねがスマホだと幅全開表示になけどなんでやねん */
+  width: auto !important;
+  display: inline-block !important;
+}
+</style>
+<link rel="preload" href="./突然の死ジェネレーター(吹き出し文字作成)_files/integrator.js.ダウンロード" as="script"><script type="text/javascript" src="./突然の死ジェネレーター(吹き出し文字作成)_files/integrator.js.ダウンロード"></script><link rel="preload" href="./突然の死ジェネレーター(吹き出し文字作成)_files/integrator.js(1).ダウンロード" as="script"><script type="text/javascript" src="./突然の死ジェネレーター(吹き出し文字作成)_files/integrator.js(1).ダウンロード"></script><script type="text/javascript" charset="utf-8" async="" src="./突然の死ジェネレーター(吹き出し文字作成)_files/button.ff75f6bb802cdab010d3711201caf594.js.ダウンロード"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, "hiragino kaku gothic pro",meiryo,"ms pgothic",sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(http://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}.fb_mobile_overlay_active{height:100%;overflow:hidden;position:fixed;width:100%}.fb_shrink_active{opacity:1;transform:scale(1, 1);transition-duration:200ms;transition-timing-function:ease-out}.fb_shrink_active:active{opacity:.5;transform:scale(.75, .75)}</style><link rel="preload" href="./突然の死ジェネレーター(吹き出し文字作成)_files/integrator.js(2).ダウンロード" as="script"><script type="text/javascript" src="./突然の死ジェネレーター(吹き出し文字作成)_files/integrator.js(2).ダウンロード"></script><link rel="preload" href="./突然の死ジェネレーター(吹き出し文字作成)_files/integrator.js(3).ダウンロード" as="script"><script type="text/javascript" src="./突然の死ジェネレーター(吹き出し文字作成)_files/integrator.js(3).ダウンロード"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, "hiragino kaku gothic pro",meiryo,"ms pgothic",sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(http://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(http://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}.fb_mobile_overlay_active{height:100%;overflow:hidden;position:fixed;width:100%}.fb_shrink_active{opacity:1;transform:scale(1, 1);transition-duration:200ms;transition-timing-function:ease-out}.fb_shrink_active:active{opacity:.5;transform:scale(.75, .75)}</style></head>
+<body>
 
 
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-      <!-- <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"> -->
-      <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-      <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
+<div id="allwrap">
+	<div class="page-header">
+
+		<h1>突然の死ジェネレーター<br>
+		<small>吹き出し文字を簡単に作れます</small></h1>
+	</div>
+
+	<p style="text-align:center;">＿人人人人人人＿<br>
+	＞　突然の死　＜<br>
+	￣Y^Y^Y^Y^Y￣</p>
+	<p style="text-align:center;font-size:12px;">
+	みたいな吹き出し文字を作れるやつです。</p>
 
 
-    </head>
-    <body>
 
-      <!-- Always shows a header, even in smaller screens. -->
-      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header">
-          <div class="mdl-layout__header-row">
-            <!-- Title -->
-            <span class="mdl-layout-title">Top | Eino's site</span>
-            <!-- Add spacer, to align navigation to the right -->
-            <div class="mdl-layout-spacer"></div>
-            <!-- Navigation. We hide it in small screens. -->
-            <!-- <nav class="mdl-navigation mdl-layout--large-screen-only">
-              <a class="mdl-navigation__link" href="">Link</a>
-              <a class="mdl-navigation__link" href="">Link</a>
-              <a class="mdl-navigation__link" href="">Link</a>
-              <a class="mdl-navigation__link" href="">Link</a>
-            </nav> -->
-          </div>
-        </header>
-        <div class="mdl-layout__drawer">
-          <span class="mdl-layout-title">Contents</span>
-          <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="http://eino.shop/">Contact</a>
-            <!-- <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a> -->
-          </nav>
+	<form class="form-horizontal">
+<!-- 		<p style="text-align:center;"><a id="copy" class="btn btn-default btn-sm">・・・・・</a></p> -->
+		<textarea class="form-control" name="" id="input" style="width: 100%; max-width: 500px; margin: 0px auto 10px; overflow: hidden; word-wrap: break-word; resize: horizontal; height: 54px;" placeholder="何か文字を入れてちょんまげ"></textarea>
 
-          </br>
-          </br>
-          </br>
-          </br>
-          </br>
-          </br>
-          </br>
-          </br>
-          </br>
-          </br>
-
-          <center>
-            (c)2017 eiNo
-          </center>
+		<textarea class="form-control" name="" rows="3" id="result" style="width: 100%; max-width: 500px; margin: 0px auto 10px; overflow: hidden; word-wrap: break-word; resize: horizontal; height: inherit;" placeholder="">＿人人人人人人＿
+＞　突然の死　＜
+￣Y^Y^Y^Y^Y￣</textarea>
+		<p style="text-align:center"><a id="tweet-btn" class="btn btn-default btn-primary" href="https://twitter.com/intent/tweet?text=%EF%BC%BF%E4%BA%BA%E4%BA%BA%E4%BA%BA%E4%BA%BA%E4%BA%BA%EF%BC%BF%0D%EF%BC%9E%E3%80%80%E3%81%95%E3%81%82%E3%81%82%E3%80%80%EF%BC%9C%0D%0A%EF%BF%A3Y%5EY%5EY%5EY%EF%BF%A3%0A%23%E7%AA%81%E7%84%B6%E3%81%AE%E6%AD%BB&amp;url=http://totuzennosi.sacnoha.com">Tweet</a></p>
+	</form>
 
 
-        </div>
-        <main class="mdl-layout__content">
-          <div class="page-content">
-            <!-- Your content goes here -->
-            <h3>更新履歴</h3>
-            <p><strong>new</strong> einok.github.io に移転</p>
-            <p>eino.shopに移転</p>
-            <p>eino.client.jp に移転
-          </div>
-        </main>
-      </div>
 
-    </body>
-  </html>
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ja'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+
+<textarea tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px; padding: 0px; box-sizing: content-box; word-wrap: break-word; overflow: hidden; transition: none; font-family: Osaka-mono, Osaka-等幅, &quot;ＭＳ ゴシック&quot;, monospace; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; word-spacing: 0px; text-indent: 0px; line-height: 20px; width: 474px; height: 20px; min-height: 0px !important; resize: horizontal;" class="autosizejs"></textarea><iframe name="oauth2relay846498263" id="oauth2relay846498263" src="./突然の死ジェネレーター(吹き出し文字作成)_files/postmessageRelay.html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe><textarea tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px; padding: 0px; box-sizing: content-box; word-wrap: break-word; overflow: hidden; transition: none; height: 0px !important; min-height: 0px !important; font-family: Osaka-mono, Osaka-等幅, &quot;ＭＳ ゴシック&quot;, monospace; font-size: 14px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; word-spacing: 0px; text-indent: 0px; line-height: 20px; width: 474px;" class="autosizejs"></textarea></body></html>
